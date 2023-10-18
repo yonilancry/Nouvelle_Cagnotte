@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Soutien à Israël</title>
+    <meta name="description" content="Campagne de soutien pour Israël">
+    <link rel="icon" href="img/logo.png" sizes="32x32" type="image/png">
+    <!-- custom.css -->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- font-awesome -->
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="css/aos.css">
+</head>
+
+<body>
+
+    <!-- banner -->
+
+    <div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(img/img_1.png);">
+        <div class="container text-center text-md-left">
+            <header>
+                <div class="row justify-content-between">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-6 align-self-center text-right">
+                        <a href="https://lydia-app.com/pots?id=56830-la-lumiere-des-nations" class="text-white lead">Soutenez Israël</a>
+                    </div>
+                </div>
+
+            </header>
+            <h1 data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="display-3 text-white font-weight-bold my-5">
+            	Israël,<br>
+            	une nation de vie
+            </h1>
+            <p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="lead text-white my-4">
+                Financer une campagne de promotion pour Israël sur les principales chaînes de <b>télévision françaises, européennes et internationales. </b>
+                <br>Afficher le soutien à Israël sur le plus grand nombre possible de panneaux d'affichage.</p>
+
+            <a href="https://lydia-app.com/pots?id=56830-la-lumiere-des-nations" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green ">Je soutiens Israël</a>
+        </div>
+    </div>
+    <!-- three-blcok -->
+    <div class="container my-5 py-2">
+        <div class="alert alert-warning" role="alert">
+            🇮🇱Chers amis, un message très important au milieu de cette guerre où nous prions pour nos frères juifs en Israël. Le rav Moshe Cohen, grand mekoubal à Jérusalem, vient de nous transmettre le message selon lequel cette nuit, il a rêvé de Baba Salé. Dans son rêve, Baba Salé lui a dit qu'en temps de guerre, la seule protection d'un juif est de lire <a href="#tehilim">les Tehilim (psaumes de David)</a> et de boire un verre d'eau chaude, comme nous le dit le Zohar dans la Parachat Ki Tetze (9:15).
+        </div>
+        <div class="text-center">
+        <h4 class="text-center font-weight-bold my-5">Vous souhaitez connaître toutes les informations relatives à ces cagnottes ? ⬇</h4>
+            <div class="container my-5 py-2">
+                <div class="text-lg-left">
+                    <h5 class="font-weight-bold my-5 text-center" id="Objectif">Objectif:</h5>
+                    Rassembler des dons pour financer une campagne de visibilité pour Israël sur les grandes chaînes de télévision françaises, européennes et internationales.
+                    Afficher le soutien à Israël sur le plus de panneaux d'affichages possibles.
+
+                    <h5 class="font-weight-bold my-5 text-center" id="messageCle">Message clé:</h5>
+                    Israël est un pays démocratique et moderne qui mérite d'être soutenu.
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr>
+
+
+        <div class="text-center">
+            <h4 class="text-center font-weight-bold my-5" id="simulateur">Faire une simulation  ⬇</h4>
+            <form id="donForm">
+                <label for="montant">Montant du don (en €) :</label>
+                <input type="number" id="montant" min="1" required>
+                <button type="submit" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green">Simuler</button>
+                <div class="alert alert-success" role="alert">
+                    <p id="affichesPubliees" class="text-secondary"></p>
+                    <p id="spotChainePubliees" class="text-secondary"></p>
+                    <p id="messageSpotifyPubliees" class="text-secondary"></p>
+                    <p id="spotNetflixPubliees" class="text-secondary"></p>
+                </div>
+            </form>
+
+
+            <script>
+
+                /*
+                * 40€ = 1000 affiches digitale publié dans les métros, le gars, les centres commerciaux, les supermarchés, les cabinets médicaux
+                * 2000€ = 1 spot sur les chaines les plus regardés de France aux heures de grandes écoutes
+                * 6€ = 1000 messages sur Spotify
+                * 60€ = 1000 spots publicitaires de soutien sur NetFlix
+                *
+                *
+                **/
+
+                const donForm = document.getElementById("donForm");
+                const montantInput = document.getElementById("montant");
+                const affichesDigitalePublieesElement = document.getElementById("affichesPubliees");
+                const spotChainesElement = document.getElementById("spotChainePubliees");
+                const messageSpotifyElement = document.getElementById("messageSpotifyPubliees");
+                const spotNetflixElement = document.getElementById("spotNetflixPubliees");
+
+                donForm.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    const montant = parseInt(montantInput.value);
+
+                    //isNaN == Not A Number
+                    if (!isNaN(montant)) {
+                        affichesDigitalePublieesElement.textContent = `Estimation d'affiche : ${Math.round((montant/0.04)-0.65)}`;
+                        messageSpotifyElement.textContent=`Estimation de messages sur Spotify : ${Math.round((montant/0.006)-0.65)}`
+                        spotNetflixElement.textContent=`Estimation de spot sur Netflix: ${Math.round((montant/0.06)-0.65)}`
+                        if (montant>=2000 && Math.round((montant/1500)-0.65)!==-1)
+                        {
+                            "<br>"
+                            spotChainesElement.textContent= `Estimation de spot sur chaine: ${Math.round((montant/1500)-0.65)}`
+                        }
+
+                    }
+                    else {
+                        alert("Impossible :/");
+                    }
+                });
+            </script>
+        </div>
+
+
+
+
+<!--
+        <h2 class="text-center font-weight-bold my-5">Smartest protection for your site</h2>
+        <div class="row">
+            <div data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000" data-aos-once="true" class="col-md-4 text-center">
+                <img src="img/smart-protect-1.jpg" alt="Anti-spam" class="mx-auto">
+                <h4>Anti-spam</h4>
+                <p>Lorem ipsum dolor sit amet porro his no his deleniti</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true" class="col-md-4 text-center">
+                <img src="img/smart-protect-2.jpg" alt="Phishing Detect" class="mx-auto">
+                <h4>Phishing Detect</h4>
+                <p>Ne error antiopam usu. Sed vocen concludaturque ea</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-aos-once="true" class="col-md-4 text-center">
+                <img src="img/smart-protect-3.jpg" alt="Smart Scan" class="mx-auto">
+                <h4>Smart Scan</h4>
+                <p>Et usu ocurreret elaboraret doctus prodesse assueverit.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid feature" id="feature-first">
+        <div class="container my-5">
+            <div class="row justify-content-between text-center text-md-left">
+                <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6">
+                    <h2 class="font-weight-bold">Take a look inside</h2>
+                    <p class="my-4">Te iisque labitur eos, nec sale argumentum scribentur no,
+                        <br> augue disputando in vim. Erat fugit sit at, ius lorem deserunt deterruisset no.</p>
+                    <a href="#" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn More</a>
+                </div>
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 align-self-center">
+                    <img src="img/feature-1.png" alt="Take a look inside" class="mx-auto d-block">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid feature" id="feature-last">
+        <div class="container">
+            <div class="row justify-content-between text-center text-md-left">
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 flex-md-last">
+                    <h2 class="font-weight-bold">Safe and reliable</h2>
+                    <p class="my-4">
+                        Duo suas detracto maiestatis ad, commodo lucilius invenire nec ad,
+                        <br> eum et oratio disputationi. Falli lobortis his ad
+                    </p>
+                    <a href="#" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn More</a>
+                </div>
+                <div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6 align-self-center flex-md-first">
+                    <img src="img/feature-2.png" alt="Safe and reliable" class="mx-auto d-block">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 py-2" id="price-table">
+        <h2 class="text-center font-weight-bold d-block mb-3">Check our pricing</h2>
+        <div class="row">
+            <div data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true" class="col-md-4 text-center py-4 mt-5">
+                <h4 class="my-4">STARTUP</h4>
+                <p class="font-weight-bold">$ <span class="display-2 font-weight-bold">0</span> / MO.</p>
+                <ul class="list-unstyled">
+                    <li>Up to 5 Documents</li>
+                    <li>Up to 3 Reviews</li>
+                    <li>5 team Members</li>
+                    <li>Limited Support</li>
+                </ul>
+                <a href="#" class="btn my-4 font-weight-bold atlas-cta cta-ghost">Get Free</a>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" class="col-md-4 text-center py-4 mt-5 rounded" id="price-table__premium">
+                <h4 class="my-4">PREMIUM</h4>
+                <p class="font-weight-bold">$ <span class="display-2 font-weight-bold">10</span> / MO.</p>
+                <ul class="list-unstyled">
+                    <li>Up to 15 Documents</li>
+                    <li>Up to 10 Reviews</li>
+                    <li>25 team Members</li>
+                    <li>Limited Support</li>
+                </ul>
+                <a href="#" class="btn my-4 font-weight-bold atlas-cta cta-green">Get Free</a>
+            </div>
+            <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true" class="col-md-4 text-center py-4 mt-5">
+                <h4 class="my-4">PROFESSIONAL</h4>
+                <p class="font-weight-bold">$ <span class="display-2 font-weight-bold">30</span> / MO.</p>
+                <ul class="list-unstyled">
+                    <li>Unlimited Documents</li>
+                    <li>Unlimited Reviews</li>
+                    <li>Unlimited Members</li>
+                    <li>Unlimited Support</li>
+                </ul>
+                <a href="#" class="btn my-4 font-weight-bold atlas-cta cta-ghost">Get Free</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-2 py-2 align-self-center">
+                    <img src="img/client-1.png" class="mx-auto d-block">
+                </div>
+                <div class="col-sm-4 col-md-2 py-2 align-self-center">
+                    <img src="img/client-2.png" class="mx-auto d-block">
+                </div>
+                <div class="col-sm-4 col-md-2 py-2 align-self-center">
+                    <img src="img/client-3.png" class="mx-auto d-block">
+                </div>
+                <div class="col-sm-4 col-md-2 py-2 align-self-center">
+                    <img src="img/client-4.png" class="mx-auto d-block">
+                </div>
+                <div class="col-sm-4 col-md-2 py-2 align-self-center">
+                    <img src="img/client-5.png" class="mx-auto d-block">
+                </div>
+                <div class="col-sm-4 col-md-2 py-2 align-self-center">
+                    <img src="img/client-6.png" class="mx-auto d-block">
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- contact -->
+    <div class="jumbotron jumbotron-fluid" id="contact" style="background-image: url(img/contact-bk.jpg);">
+        <div class="container my-5">
+            <div class="row justify-content-between">
+                <div class="col-md-6 text-white">
+                    <h2 class="font-weight-bold">Contactez-nous</h2>
+                    <p class="my-4">
+                        Nous sommes disponibles tous les jours 24h/24 sur Whatsapp, appel mobile (coût fixe), SMS, mail <b> sauf les vendredis soir et les samedis en journée.</b>
+                        <br> Nous répondons à toutes vos demandes dans les plus brefs délais
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>Email : Stevepro2409@gmail.com
+                        </li>
+                        <li>Numéro de téléphone : +33 7 67 09 56 89</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <form method="post" enctype="text/plain">
+                    	<div class="row">
+	                        <div class="form-group col-md-6">
+	                            <label for="name">Votre nom</label>
+	                            <input type="name" class="form-control" id="name">
+	                        </div>
+	                        <div class="form-group col-md-6">
+	                            <label for="Email">Votre adresse mail</label>
+	                            <input type="email" class="form-control" id="Email">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label for="message">Votre message</label>
+	                        <textarea class="form-control" id="message" rows="3"></textarea>
+	                    </div>
+                        <button type="submit" name="submit" value="Submit" class="btn font-weight-bold atlas-cta atlas-cta-wide cta-green my-3">Envoyez le formulaire</button>
+                    </form>
+                    <script src="https://smtpjs.com/v3/smtp.js">
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- copyright -->
+	<div class="jumbotron jumbotron-fluid" id="copyright">
+        <div class="container">
+            <div class="row justify-content-between">
+            	<div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
+                    Copyright © 2023.
+                    <br>
+                    <a href="mentions_legales.html">Mentions légales</a>
+
+                </div>
+               <!-- <div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-medium" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="d-inline-block text-center ml-2">
+                    	<i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    
+    <!-- AOS -->
+    <script src="js/aos.js"></script>
+    <script>
+      AOS.init({
+      });
+    </script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script> function sendEmail() {
+        Email.send({
+            SecureToken: "81eabe01-1fc0-42e3-968c-f164ca8a122d",
+            To : 'y.lancry@icloud.com',
+            From : document.getElementById('Email'),
+            Subject : "Nouveau mail d'un contact",
+            Body : "message : "+document.getElementById('message')
+        }).then(
+            message => alert("Le message a bien été envoyé")
+        );
+    }</script>
+
+    </div> </body>
+
+</html>
